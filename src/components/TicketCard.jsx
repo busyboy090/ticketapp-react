@@ -5,6 +5,13 @@ import { deleteTicket } from "../services/ticketService";
 function TicketCard({ ticket, edit }) {
   const [show, setShow] = useState(true);
 
+  const scrollTop = () => {
+    window.scroll({
+      top: 0,
+      behaviour: "smooth"
+    })
+  }
+
   if (show) {
     return (
       <li className="bg-white p-4 rounded-xl shadow flex flex-col">
@@ -13,7 +20,10 @@ function TicketCard({ ticket, edit }) {
           <h4 className="font-bold">{ticket.title}</h4>
 
           <div className="flex gap-3">
-            <button type="button" onClick={() => edit(ticket.id)}>
+            <button type="button" onClick={() => {
+              edit(ticket.id)
+              scrollTop()
+            }}>
               <Edit3 size={15} className="text-[#4e46e5e1]" />
             </button>
             <button onClick={() => {

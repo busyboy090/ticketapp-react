@@ -2,10 +2,20 @@ const TICKET_KEY = "tickets";
 
 // Get tickets stats
 export function getTicketsStats() {
-    return JSON.parse(localStorage.getItem(TICKET_KEY)).reduce((acc,ticket) => {
-        acc[ticket] = (acc[ticket] || 0) + 1;
+    const tickets = JSON.parse(localStorage.getItem(TICKET_KEY)) || [];
+    const stats =  tickets.reduce((acc,ticket) => {
+        acc[ticket.status] = (acc[ticket.status] || 0) + 1;
         return acc;
     }, {});
+
+    const open = stats.open || 0;
+    const in_progress = stats.in_progress || 0
+
+    return { 
+        total: tickets.length,
+        closed: stats.closed || 0,
+        open: open + in_progress
+    }
 }
 
 // Get all tickets

@@ -6,6 +6,7 @@ import { getTicketsStats } from "../services/ticketService";
 
 function Dashboard() {
   const navigate = useNavigate();
+  const stats = getTicketsStats()
 
   const handleLogout = () => {
     logoutUser();
@@ -19,9 +20,9 @@ function Dashboard() {
         <h1 className="text-2xl font-bold text-[#4f46e5]">Ticket Dashboard</h1>
         <button
           onClick={handleLogout}
-          className="flex items-center gap-2 bg-[#4f46e5] hover:bg-[#4e46e5e1] text-white px-4 py-2 rounded-lg"
+          className="flex items-center gap-2 bg-[#4f46e5] hover:bg-[#4e46e5e1] text-white text-sm px-2 py-2 rounded-lg"
         >
-          <LogOut size={18} />
+          <LogOut size={15} />
           Logout
         </button>
       </header>
@@ -36,7 +37,7 @@ function Dashboard() {
             <Ticket className="text-blue-600" size={36} />
             <div>
               <p className="text-gray-500 text-sm">Total Tickets</p>
-              <h3 className="text-2xl font-bold">120</h3>
+              <h3 className="text-2xl font-bold">{stats.total}</h3>
             </div>
           </div>
 
@@ -44,7 +45,7 @@ function Dashboard() {
             <Clock className="text-amber-500" size={36} />
             <div>
               <p className="text-gray-500 text-sm">Open Tickets</p>
-              <h3 className="text-2xl font-bold">45</h3>
+              <h3 className="text-2xl font-bold">{stats.open}</h3>
             </div>
           </div>
 
@@ -52,7 +53,7 @@ function Dashboard() {
             <CheckCircle className="text-green-600" size={36} />
             <div>
               <p className="text-gray-500 text-sm">Resolved Tickets</p>
-              <h3 className="text-2xl font-bold">75</h3>
+              <h3 className="text-2xl font-bold">{stats.closed}</h3>
             </div>
           </div>
         </div>
