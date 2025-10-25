@@ -8,53 +8,53 @@ A simple Ticket Management System built with React, featuring authentication, CR
 
 ### 1. 🔐 Authentication
 
-Login and Signup with form validation
+- Login and Signup with form validation
 
-Simulated token-based auth using localStorage
+- Simulated token-based auth using localStorage
 
-Redirect to Dashboard after login
+- Redirect to Dashboard after login
 
 ### 2. 🎫 Ticket Management
 
-Create, Read, Update, and Delete tickets
+- Create, Read, Update, and Delete tickets
 
-Inline and real-time validation for all inputs
+- Inline and real-time validation for all inputs
 
-Status badges with clear color tones:
+- Status badges with clear color tones:
 
-open → Green
+- open → Green tone
 
-in_progress → Amber
+- in_progress → Amber tone
 
-closed → Gray
+- closed → Gray tone
 
 ### 3.🔔 User Feedback
 
-Toastify notifications for success, errors, and validation alerts
+- Toastify notifications for success, errors, and validation alerts
 
-Inline error messages beneath form fields
+- Inline error messages beneath form fields
 
 ### 4.🧭 Routing
 
-Protected routes using React Router DOM
+- Protected routes using React Router DOM
 
-Redirect unauthenticated users to /auth/login
+- Redirect unauthenticated users to /auth/login
 
 ---
 
 ## 🛠️ Tech Stack
 
-Frontend: React + Vite
+- Frontend: React + Vite
 
-Routing: React Router DOM
+- Routing: React Router DOM
 
-UI Components: Tailwind CSS
+- UI Components: Tailwind CSS
 
-Icons: Lucide React
+- Icons: Lucide React
 
-Notifications: React Toastify
+- Notifications: React Toastify
 
-State Management: React Hooks + localStorage
+- State Management: React Hooks + localStorage
 
 ---
 
@@ -84,16 +84,16 @@ npm run dev
 
 ## 🧪 Usage Instructions
 
-Go to /auth/signup to create a new account.
+### 1. Go to /auth/signup to create a new account.
 
-Login at /auth/login.
+### 2. Login at /auth/login.
 
-Once logged in, you’ll be redirected to /dashboard.
+- Once logged in, you’ll be redirected to /dashboard.
 
-Navigate to the Tickets page to:
+- Navigate to the Tickets page to:
 
-➕ Create new tickets
+- ➕ Create new tickets
 
-✏️ Edit existing ones
+- ✏️ Edit existing ones
 
-❌ Delete tickets with confirmation
+- ❌ Delete tickets with confirmation
