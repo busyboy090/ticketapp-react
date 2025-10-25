@@ -1,16 +1,99 @@
-# React + Vite
+# Ticket Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple Ticket Management System built with React, featuring authentication, CRUD operations, form validation, and toast notifications.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+### 1. 🔐 Authentication
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Login and Signup with form validation
 
-## Expanding the ESLint configuration
+Simulated token-based auth using localStorage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Redirect to Dashboard after login
+
+### 2. 🎫 Ticket Management
+
+Create, Read, Update, and Delete tickets
+
+Inline and real-time validation for all inputs
+
+Status badges with clear color tones:
+
+open → Green
+
+in_progress → Amber
+
+closed → Gray
+
+### 3.🔔 User Feedback
+
+Toastify notifications for success, errors, and validation alerts
+
+Inline error messages beneath form fields
+
+### 4.🧭 Routing
+
+Protected routes using React Router DOM
+
+Redirect unauthenticated users to /auth/login
+
+---
+
+## 🛠️ Tech Stack
+
+Frontend: React + Vite
+
+Routing: React Router DOM
+
+UI Components: Tailwind CSS
+
+Icons: Lucide React
+
+Notifications: React Toastify
+
+State Management: React Hooks + localStorage
+
+---
+
+## 🚀 Live Demo
+🔗 [View on Netlify](https://ticketapp-react.netlify.app)
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/busyboy090/ticketapp-react.git
+cd ticketapp-react
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Start the development server
+```bash
+npm run dev
+```
+--- 
+
+## 🧪 Usage Instructions
+
+Go to /auth/signup to create a new account.
+
+Login at /auth/login.
+
+Once logged in, you’ll be redirected to /dashboard.
+
+Navigate to the Tickets page to:
+
+➕ Create new tickets
+
+✏️ Edit existing ones
+
+❌ Delete tickets with confirmation
