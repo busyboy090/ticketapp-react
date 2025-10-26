@@ -17,7 +17,7 @@ function Dashboard() {
     <div className="min-h-screen max-w-[1440px] mx-auto bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-[#4f46e5]">Ticket Dashboard</h1>
+        <h1 className="text-2xl font-bold text-[#4f46e5]">🎟️ TicketApp</h1>
         <button
           onClick={handleLogout}
           className="flex items-center gap-2 bg-[#4f46e5] hover:bg-[#4e46e5e1] text-white text-sm px-2 py-2 rounded-lg"

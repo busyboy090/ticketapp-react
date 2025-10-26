@@ -180,10 +180,10 @@ function Tickets() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-[#4f46e5]">Ticket Management</h1>
+        <h1 className="text-2xl font-bold text-[#4f46e5]">🎟️ TicketApp</h1>
         <button
           onClick={() => navigate("/dashboard")}
-          className="bg-[#4f46e5] hover:bg-[#4e46e5e1] text-white px-4 py-2 rounded-lg"
+          className="bg-[#4f46e5] hover:bg-[#4e46e5e1] text-white text-sm px-2 py-2 rounded-lg"
         >
           Back to Dashboard
         </button>
