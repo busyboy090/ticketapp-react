@@ -1,16 +1,27 @@
 import { useNavigate } from "react-router-dom";
-import { LogOut, Ticket, CheckCircle, Clock } from "lucide-react";
-import { useEffect } from "react";
+import { LogOut, Ticket, CheckCircle, Clock, Loader2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { logoutUser } from "../services/authService";
 import { getTicketsStats } from "../services/ticketService";
+import { toast } from "react-toastify";
 
 function Dashboard() {
   const navigate = useNavigate();
-  const stats = getTicketsStats()
+  const stats = getTicketsStats();
+  const [loading, setLoading] = useState(false)
 
-  const handleLogout = () => {
-    logoutUser();
-    navigate("/");
+  const handleLogout = async () => {
+    if(loading) return 
+
+    setLoading(true)
+    try {
+      await logoutUser();
+      navigate("/");
+    } catch (err) {
+      toast.error(err.message || "Failed to logout")
+    }finally {
+      setLoading(false)
+    }
   };
 
   return (
@@ -22,8 +33,12 @@ function Dashboard() {
           onClick={handleLogout}
           className="flex items-center gap-2 bg-[#4f46e5] hover:bg-[#4e46e5e1] text-white text-sm px-2 py-2 rounded-lg"
         >
-          <LogOut size={15} />
-          Logout
+          {
+            loading ? <Loader2 className="animate-spin h-5 w-5 mx-auto" /> : <>
+              <LogOut size={15} />
+              Logout
+            </>
+          }
         </button>
       </header>
 

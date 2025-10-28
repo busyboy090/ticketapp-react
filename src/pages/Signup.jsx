@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { signupUser } from "@/services/authService";
 import { toast } from "react-toastify";
-import { EyeOff, Eye } from "lucide-react";
+import { EyeOff, Eye, Loader2 } from "lucide-react";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -25,6 +25,7 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false)
 
   const validateForm = () => {
     let valid = true;
@@ -66,18 +67,24 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(loading) return
+
     const { valid, errors } = validateForm();
     if (!valid) {
       setError(errors);
       return;
     }
 
+    setLoading(true)
     try {
       signupUser(email, password);
       toast.success("Signup successful");
       setTimeout(() => navigate("/auth/login"), 1000);
     } catch (err) {
-      toast.error(err.message);
+      toast.error(err.message || "Signup failed");
+    }finally {
+      setLoading(false)
     }
   };
 
@@ -91,6 +98,7 @@ function Signup() {
             <input
               type="text"
               id="email"
+              name="email"
               className="border rounded-lg w-full p-2"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -179,7 +187,10 @@ function Signup() {
             type="submit"
             className="bg-[#4f46e5] text-white w-full py-2 rounded-lg hover:bg-[#4e46e5e1]"
           >
-            Create Account
+            {
+              loading ? <Loader2 className="animate-spin h-5 w-5 mx-auto" /> :
+              <span>Create Account</span>
+            }
           </button>
 
           <p className="text-center text-sm mt-3">

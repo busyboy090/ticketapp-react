@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const SESSION_KEY = 'ticketapp_session';
 const USERS_KEY = "ticketapp_users";
 
@@ -35,12 +37,7 @@ export function getSession() {
   return raw ? JSON.parse(raw) : null;
 }
 
-export function isAuthenticated() {
-  const session = getSession();
-
-  if(session && new Date(session.expireAt) > new Date()) { 
-    return true
-  } else {
-    return false
-  }
-}
+// clear session
+export const clearSession = () => {
+  localStorage.removeItem(SESSION_KEY);
+};

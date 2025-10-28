@@ -20,12 +20,16 @@ export function getTicketsStats() {
 
 // Get all tickets
 export function getAllTickets() {
-    return JSON.parse(localStorage.getItem(TICKET_KEY))
+    return JSON.parse(localStorage.getItem(TICKET_KEY)) || []; 
 }
 
 // Get ticket by id
 export function getTicketById(id) {
-    return JSON.parse(localStorage.getItem(TICKET_KEY)).filter(t => t.id == id)[0]
+    const ticket = JSON.parse(localStorage.getItem(TICKET_KEY)).filter(t => t.id == id)[0];
+
+    if(!ticket) throw new Error("Ticket not found.");
+
+    return ticket; 
 }
 
 // Create a new ticket
@@ -48,10 +52,26 @@ export function createTicket({title, description, status, priority}) {
 // Edit ticket
 export function editTicket({id,title,description,status,priority}) {
     const tickets = JSON.parse(localStorage.getItem(TICKET_KEY)) || [];
+    let update = false
 
-    const ticket = tickets.map(t => 
-        t.id == id ? {...t, id, title, description, status, priority, updatedAt: new Date().toLocaleString() } : t
-    );
+    const ticket = tickets.map(t => {
+        if(t.id == id) {
+            update = true;
+            return {
+                ...t, 
+                id, 
+                title, 
+                description, 
+                status,
+                priority, 
+                updatedAt: new Date().toLocaleString()
+            }
+        } else {
+            return t
+        }
+    });
+
+    if(!update) throw new Error("Ticket not found.");
 
     localStorage.setItem(TICKET_KEY, JSON.stringify(ticket));
 }

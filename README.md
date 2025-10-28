@@ -56,6 +56,8 @@ A simple Ticket Management System built with React, featuring authentication, CR
 
 - State Management: React Hooks + localStorage
 
+- Api Management: Tanstack query
+
 ---
 
 ## 🚀 Live Demo

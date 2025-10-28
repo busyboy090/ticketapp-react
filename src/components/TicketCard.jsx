@@ -1,15 +1,24 @@
 import { useState } from "react";
 import { Edit3, Trash2 } from "lucide-react";
-import { deleteTicket } from "../services/ticketService";
+import ConfirmationModal from "./ConfirmationModal";
 
-function TicketCard({ ticket, edit }) {
+function TicketCard({ ticket, edit, removeTicket }) {
   const [show, setShow] = useState(true);
+  const [showDeleteModal, setShowDeletaModal] = useState(false)
 
   const scrollTop = () => {
     window.scroll({
       top: 0,
       behaviour: "smooth"
     })
+  }
+
+  const deleteTicket = (title) => {
+    if(title === ticket.title) {
+      removeTicket(ticket.id)
+      setShow(false)
+      setShowDeletaModal(false)
+    }
   }
 
   if (show) {
@@ -26,14 +35,13 @@ function TicketCard({ ticket, edit }) {
             }}>
               <Edit3 size={15} className="text-[#4e46e5e1]" />
             </button>
-            <button onClick={() => {
-                deleteTicket(ticket.id)
-                setShow(false)
-            }} type="button">
+            <button onClick={() => setShowDeletaModal(true)} type="button">
               <Trash2 size={15} className="text-[red]" />
             </button>
           </div>
         </div>
+
+        <ConfirmationModal open={showDeleteModal} close={() => setShowDeletaModal(false)} deleteTicket={(title) => deleteTicket(title)} title={ticket.title} />
 
         <div className="space-y-2 mt-2">
           {ticket.description && (
